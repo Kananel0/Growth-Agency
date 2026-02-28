@@ -9,67 +9,97 @@ const FOOTER = styled.footer`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media only Screen and (max-width: 48em) {
+  background-color: #0a0b10;
+  color: #fff;
+
+  @media only screen and (max-width: 48em) {
     flex-direction: column;
-    align-items: center;
-    div {
-      &:first-child {
-        margin-bottom: 1rem;
-      }
-    }
+    padding: 2rem;
+    text-align: center;
   }
 `;
 
 const RightText = styled.div`
   display: flex;
   align-items: center;
+  
   img {
     width: 1.5rem;
     height: 1.5rem;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     filter: invert(100%);
     transition: all 0.2s ease-in-out;
   }
+
   a {
+    display: flex;
+    align-items: center;
     &:hover {
       img {
-        transform: scale(1.5);
+        transform: scale(1.3);
         filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(216deg)
           brightness(100%) contrast(97%);
       }
     }
   }
+
+  @media only screen and (max-width: 48em) {
+    flex-direction: column;
+    margin-top: 1rem;
+    
+    span {
+      margin-bottom: 1rem;
+    }
+    
+    img {
+      margin: 0 0.8rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+    }
+  }
 `;
+
 const LeftText = styled.div`
   text-align: left;
+  font-size: 0.9rem;
+  opacity: 0.8;
+
+  @media only screen and (max-width: 48em) {
+    text-align: center;
+  }
 `;
+
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
     <FOOTER>
       <LeftText>
-        <a href="https://www.youtube.com" target="_blank">
-         
-        </a>
+        © {year} Built by Growth Agency. All rights reserved.
       </LeftText>
+      
       <RightText>
-        Reach out to me via 😉
-        <a href="https://twitter.com" target="_blank">
-    <img src={Twitter} alt="Twitter" />
-</a>
+        <span>Reach out to me via 😉</span>
+        <div className="social-links">
+          {/* rel="noreferrer" added to clear ESLint warnings */}
+          <a href="https://twitter.com" target="_blank" rel="noreferrer">
+            <img src={Twitter} alt="Twitter" />
+          </a>
 
-        &nbsp;
-        <a href="https://www.instagram.com" target="_blank">
-          <img src={Instagram} alt="Instagram" />
-        </a>
-        &nbsp;
-        <a href="mailto:email?subject=Email From Your Website">
-          <img src={Gmail} alt="Gmail" />
-        </a>
+          <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
+            <img src={Instagram} alt="Instagram" />
+          </a>
+
+          <a href="mailto:hello@growthagency.com?subject=Email From Your Website">
+            <img src={Gmail} alt="Gmail" />
+          </a>
+        </div>
       </RightText>
     </FOOTER>
   );
 };
 
 export default Footer;
-
-
