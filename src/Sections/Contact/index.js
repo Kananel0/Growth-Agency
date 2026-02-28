@@ -5,12 +5,11 @@ import Instagram from "../../assets/instagram-square-brands.svg";
 import styled from "styled-components";
 
 const ContactSection = styled.section`
-  width: 100vw;
+  width: 100%;
   padding: calc(2.5rem + 2.5vw) 0;
   background-color: #0a0b10;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   justify-content: center;
 `;
@@ -29,7 +28,6 @@ const Title = styled.h1`
     left: 50%;
     bottom: 0;
     transform: translate(-50%, 0.5rem);
-    /* or 100px */
     border-bottom: 2px solid var(--gold);
   }
 `;
@@ -38,7 +36,9 @@ const Icons = styled.div`
   display: flex;
   margin-bottom: 3rem;
   a {
+    transition: transform 0.2s;
     &:hover {
+      transform: scale(1.1);
       img {
         filter: invert(20%) sepia(100%) saturate(500%) hue-rotate(580deg)
           brightness(100%) contrast(97%);
@@ -52,22 +52,30 @@ const Icons = styled.div`
       height: 3rem;
     }
   }
+  @media only screen and (max-width: 40em) {
+    gap: 1rem;
+    a:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  input {
-    padding: 1rem calc(0.5rem + 1vw);
+  width: 70vw; /* Added width for better control */
+  max-width: 600px;
+
+  input, textarea {
+    padding: 1rem;
     margin-bottom: 1rem;
     background-color: var(--nav2);
     border: none;
     border-radius: 4px;
     color: #eff7f8;
-    &:active,
+    font-family: inherit;
     &:focus {
-      border: none;
       outline: none;
       background-color: var(--nav);
     }
@@ -75,27 +83,8 @@ const Form = styled.form`
       color: #eff7f8;
       opacity: 0.6;
     }
-    &[name="name"] {
-      margin-right: 2rem;
-    }
   }
-  textarea {
-    padding: 1rem calc(0.5rem + 1vw);
-    margin-bottom: 1rem;
-    background-color: var(--nav2);
-    border: none;
-    border-radius: 4px;
-    color: #eff7f8;
-    margin-bottom: 2rem;
-    &:focus,
-    &:active {
-      background-color: var(--nav);
-    }
-    &::placeholder {
-      color: #eff7f8;
-      opacity: 0.6;
-    }
-  }
+
   button {
     padding: 0.8rem 2rem;
     background-color: var(--white);
@@ -103,6 +92,7 @@ const Form = styled.form`
     font-size: 1.2rem;
     color: #0a0b10;
     cursor: pointer;
+    border: none;
     transition: transform 0.3s;
     &:hover {
       transform: scale(1.1);
@@ -111,58 +101,72 @@ const Form = styled.form`
       transform: scale(0.9);
     }
   }
+
+  @media only screen and (max-width: 48em) {
+    width: 90vw;
+  }
 `;
 
 const Row = styled.div`
-  @media only Screen and (max-width: 40em) {
-    display: flex;
+  display: flex;
+  width: 100%;
+  input {
+    width: 100%;
+    &[name="name"] {
+      margin-right: 2rem;
+    }
+  }
+
+  @media only screen and (max-width: 40em) {
     flex-direction: column;
-    input {
-      &[name="name"] {
-        margin-right: 0;
-      }
+    input[name="name"] {
+      margin-right: 0;
     }
   }
 `;
+
 const Contact = () => {
   return (
     <ContactSection id="contact">
       <Title>Get in touch</Title>
       <Icons>
-        <a href="https://www.facebook.com/" target="_blank">
-          {" "}
+        {/* Added rel="noreferrer" to clear ESLint warnings */}
+        <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
           <img src={Facebook} alt="Facebook" />
         </a>
-        <a href="https://www.linkedin.com" target="_blank">
-          <img src={LinkedId} alt="LinkedId" />
+        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+          <img src={LinkedId} alt="LinkedIn" />
         </a>
-        <a href="https://twitter.com/" target="_blank">
+        <a href="https://twitter.com/" target="_blank" rel="noreferrer">
           <img src={Twitter} alt="Twitter" />
         </a>
-        <a href="https://www.instagram.com/" target="_blank">
+        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
           <img src={Instagram} alt="Instagram" />
         </a>
       </Icons>
       <Form>
         <Row>
-          <input name="name" type="text" placeholder="your name" />
+          <input name="name" type="text" placeholder="your name" required />
           <input
             name="email"
             type="email"
             placeholder="enter email"
+            required
           />
         </Row>
         <textarea
-          name=""
-          id=""
+          name="message"
           cols="30"
-          rows="2"
+          rows="4"
           placeholder="your message"
+          required
         ></textarea>
         <div style={{ margin: "0 auto" }}>
           <button
+            type="submit"
             onClick={(e) => {
               e.preventDefault();
+              alert("Form submitted!");
             }}
           >
             Submit
