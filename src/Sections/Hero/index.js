@@ -14,16 +14,17 @@ const move = keyframes`
 
 const HomeSection = styled.section`
   width: 100%;
-  min-height: 80vh; /* Changed from fixed vw to min-height */
+  min-height: 80vh; 
   background-color: #0a0b10;
   display: flex;
   justify-content: center;
   position: relative;
-  overflow: hidden; /* Prevents blobs from causing side-scroll */
+  overflow: hidden; 
 
   @media only screen and (max-width: 48em) {
     flex-direction: column;
-    padding-top: 5rem;
+    padding: 5rem 0; /* Balanced padding for mobile */
+    height: auto;
   }
 `;
 
@@ -87,13 +88,13 @@ const MobileSvg = styled.img`
   animation: ${move} 2.5s ease infinite;
 
   @media only screen and (max-width: 48em) {
-    width: calc(40% + 20vw);
+    width: calc(45% + 20vw);
     margin-top: 3rem;
     align-self: center;
   }
   
   @media only screen and (max-width: 30em) {
-    width: 70%; /* Better sizing for small phones */
+    width: 80%; 
   }
 `;
 
@@ -111,7 +112,6 @@ const Lb = styled.div`
     width: 100%;
     text-align: center;
     align-items: center;
-    margin-top: 2rem;
   }
 `;
 
@@ -147,7 +147,7 @@ const Title = styled.h1`
   color: #fff;
 
   @media only screen and (max-width: 48em) {
-    font-size: calc(1.5rem + 2vw);
+    font-size: calc(1.6rem + 2vw);
   }
 `;
 
@@ -155,6 +155,10 @@ const SubText = styled.h5`
   font-size: calc(0.8rem + 0.3vw);
   color: var(--nav2, #969696);
   font-weight: 400;
+  
+  @media only screen and (max-width: 48em) {
+    font-size: 1rem;
+  }
 `;
 
 const CTA = styled.button`
@@ -182,6 +186,7 @@ const CTA = styled.button`
   
   @media only screen and (max-width: 48em) {
     font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
   }
 `;
 
@@ -190,13 +195,13 @@ const HeroSection = () => {
     <HomeSection id="home">
       <Blobs>
         <PinkBlob>
-          <img src={pinkBlob} alt="" />
+          <img src={pinkBlob} alt="Decorative Pink Blob" />
         </PinkBlob>
         <WhiteBlob>
-          <img src={whiteBlob} alt="" />
+          <img src={whiteBlob} alt="Decorative White Blob" />
         </WhiteBlob>
         <PurpleBlob>
-          <img src={purpleBlob} alt="" />
+          <img src={purpleBlob} alt="Decorative Purple Blob" />
         </PurpleBlob>
       </Blobs>
 
@@ -212,13 +217,13 @@ const HeroSection = () => {
           </SubText>
           <CTA>
             Get in touch
-            <img src={arrow} alt="cta" />
+            <img src={arrow} alt="arrow" />
           </CTA>
         </Lb>
 
         <MobileSvg
           src={Mobile}
-          alt="Mobile Svg"
+          alt="Mobile Device Illustration"
           width="400"
           height="400"
         />
