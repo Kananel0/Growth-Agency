@@ -64,6 +64,6 @@ ________________________________________
    
 ## 🔗 Links
 - Live: Growth Agency | Optimise. Elevate. Growth
-- YT VID:
-- GitHub: Kananel0/Growth-Agency
+- YT VID:https://youtu.be/Lu6TiDn1T2I
+- GitHub:[ Kananel0/Growth-Agency](https://github.com/Kananel0/Growth-Agency)
 
