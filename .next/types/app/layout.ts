@@ -1,4 +1,4 @@
-// File: C:\Users\mkmoh\Downloads\growth-agency-v5\sofi-portfolio\app\layout.tsx
+// File: C:\Users\mkmoh\Downloads\Growrh agency\Growth-Agency\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
