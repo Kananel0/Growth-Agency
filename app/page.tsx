@@ -3,7 +3,11 @@ import dynamic from 'next/dynamic'
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
-const ThreeScene = dynamic(() => import('@/components/ThreeScene'), { ssr: false })
+// FIX: Added <{ className?: string }> to satisfy TypeScript's strict mode
+const ThreeScene = dynamic<{ className?: string }>(
+  () => import('@/components/ThreeScene'), 
+  { ssr: false }
+)
 
 /* ─── Intro word sequence (like Sofi: sleep→smart→naturally) ─── */
 const INTRO_WORDS = [
@@ -13,7 +17,7 @@ const INTRO_WORDS = [
 ]
 
 const SERVICES = [
-  { n:'01', title:'SEO & Content',       desc:'Rank #1 and stay there. Data-led keyword strategy and content that converts.',                  stat:'340%',  statLabel:'avg traffic lift'  },
+  { n:'01', title:'SEO & Content',     desc:'Rank #1 and stay there. Data-led keyword strategy and content that converts.',                 stat:'340%',  statLabel:'avg traffic lift'  },
   { n:'02', title:'Paid Media',          desc:'Every dollar working harder. Google, Meta & LinkedIn engineered for maximum ROAS.',             stat:'4.8×',  statLabel:'blended ROAS'      },
   { n:'03', title:'Web Design & Dev',    desc:'Conversion-obsessed websites built with Next.js, Three.js & GSAP. Fast and beautiful.',       stat:'62%',   statLabel:'more conversions'  },
   { n:'04', title:'Branding & Identity', desc:'Logos, colour systems, typography and full identity rollouts that make you unforgettable.',    stat:'280%',  statLabel:'brand recall lift' },
