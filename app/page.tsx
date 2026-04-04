@@ -13,7 +13,7 @@ const INTRO_WORDS = [
 ]
 
 const SERVICES = [
-  { n:'01', title:'SEO & Content',       desc:'Rank #1 and stay there. Data-led keyword strategy and content that converts.',                  stat:'340%',  statLabel:'avg traffic lift'  },
+  { n:'01', title:'SEO & Content',      desc:'Rank #1 and stay there. Data-led keyword strategy and content that converts.',                  stat:'340%',  statLabel:'avg traffic lift'  },
   { n:'02', title:'Paid Media',          desc:'Every dollar working harder. Google, Meta & LinkedIn engineered for maximum ROAS.',             stat:'4.8×',  statLabel:'blended ROAS'      },
   { n:'03', title:'Web Design & Dev',    desc:'Conversion-obsessed websites built with Next.js, Three.js & GSAP. Fast and beautiful.',       stat:'62%',   statLabel:'more conversions'  },
   { n:'04', title:'Branding & Identity', desc:'Logos, colour systems, typography and full identity rollouts that make you unforgettable.',    stat:'280%',  statLabel:'brand recall lift' },
@@ -182,7 +182,11 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative min-h-screen flex items-end overflow-hidden bg-ash pb-24 pt-28">
-        <ThreeScene className="opacity-60" />
+        
+        {/* FIX: Wrapped ThreeScene in a div to apply the opacity class without passing it as a prop */}
+        <div className="absolute inset-0 opacity-60">
+          <ThreeScene />
+        </div>
 
         {/* Big left-anchored text — exactly like Sofi's "feel better" */}
         <div className="relative z-10 px-8 lg:px-16 max-w-4xl">
